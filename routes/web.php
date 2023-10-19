@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('home');
+//Route::get('/a1', function () {
+//    return "a1";
 //});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /*// 注册
 Route::get('/register', [RegisterController::class])->name('register');
