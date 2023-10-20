@@ -25,13 +25,6 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-/*// 注册
-Route::get('/register', [RegisterController::class])->name('register');
-
-// 登录
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class => 'login'])->name('login');
-
-
 // 显示所有文章
 Route::get('/articles', 'ArticleController@index');
 
@@ -52,4 +45,4 @@ Route::put('/articles/{article}', 'ArticleController@update');
 
 // 删除文章
 Route::delete('/articles/{article}', 'ArticleController@destroy');
-*/
+
