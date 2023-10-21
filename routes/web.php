@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 //    return "a1";
 //});
 
-Auth::routes();
+Auth::routes([
+    'verify' => true,
+]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
