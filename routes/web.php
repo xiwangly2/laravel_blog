@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use http\Client\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,23 +27,10 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // 显示所有文章
-Route::get('/articles', 'ArticleController@index');
-
-// 显示单个文章
-Route::get('/articles/{article}', 'ArticleController@show');
-
-// 创建文章表单
-Route::get('/articles/create', 'ArticleController@create');
-
-// 保存新文章
-Route::post('/articles', 'ArticleController@store');
-
-// 编辑文章表单
-Route::get('/articles/{article}/edit', 'ArticleController@edit');
-
-// 更新文章
-Route::put('/articles/{article}', 'ArticleController@update');
-
-// 删除文章
-Route::delete('/articles/{article}', 'ArticleController@destroy');
-
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{id}', [PostController::class , 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
