@@ -44,7 +44,7 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public function edit($id)
+    public function edit($id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $post = Post::find($id);
         return view('posts.edit', compact('post'));

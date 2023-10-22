@@ -5,7 +5,7 @@
 {{--    创建使用bootstarp美化的表单--}}
     <form method="post" action="{{ route('posts.update', $post->id) }}">
         @csrf
-        @method('PUT')
+        @method('PATCH')
         <div class="mb-3">
             <label for="title" class="form-label">标题</label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $post->title) }}">
