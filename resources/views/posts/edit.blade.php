@@ -2,16 +2,23 @@
 
 @section('content')
     <h1>编辑文章</h1>
-    <form method="post" action="/posts/{{ $post->id }}">
+{{--    创建使用bootstarp美化的表单--}}
+    <form method="post" action="{{ route('posts.update', $post->id) }}">
         @csrf
         @method('PUT')
-        <label for="title">标题：</label>
-        <input type="text" name="title" id="title" value="{{ $post->title }}">
-        <br>
-        <label for="content">内容：</label>
-        <textarea name="content" id="content">{{ $post->content }}</textarea>
-        <br>
-        <button type="submit">更新文章</button>
-    </form>
-    <a href="/posts/{{ $post->id }}">取消</a>
+        <div class="mb-3">
+            <label for="title" class="form-label">标题</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $post->title) }}">
+            @error('title')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">内容</label>
+            <textarea class="form-control" id="content" name="content" rows="3">{{ old('content', $post->content) }}</textarea>
+            @error('content')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <button type="submit" class="btn btn-primary">更新</button>
 @endsection
